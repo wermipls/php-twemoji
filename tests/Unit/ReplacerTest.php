@@ -50,3 +50,8 @@ it('can replace multi codepoint emojis in plain text', function () {
         'Hello 👋🏿',
     ]))->toMarkdown());
 });
+
+it('can replace emojis in plain text without leftover Variation Selector-16 codepoint', function () {
+    $replacer = new Replacer();
+    assertMatchesTextSnapshot($replacer->text("Hello 🅱️orld!")->toMarkdown());
+});
